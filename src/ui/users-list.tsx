@@ -1,6 +1,7 @@
 import React from 'react'
 
 export interface NormUser {
+    id: string
     fullName: string
     gender: string
     birthDate: string
@@ -26,6 +27,7 @@ export const UsersList = ({ users }: { users: NormUser[] }) => {
                     <tbody className={styles.body}>
                         {users?.map((user) => {
                             const {
+                                id,
                                 birthDate,
                                 email,
                                 fullName,
@@ -33,7 +35,7 @@ export const UsersList = ({ users }: { users: NormUser[] }) => {
                                 role
                             } = user
                             const isAdmin = role === 'Admin'
-                            return <tr>
+                            return <tr key={id}>
                                 <td className={styles.rowItem}>{fullName}</td>
                                 <td className={styles.rowItem}>{gender}</td>
                                 <td className={styles.rowItem}>{birthDate}</td>

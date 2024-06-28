@@ -51,7 +51,7 @@ export default function Search() {
       </div>
       <button
         onClick={onSearch}
-        className='ml-3 text-white bg-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm p-3 w-[170px]' children='Search' />
+        className='ml-3 text-white bg-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm p-3 w-[170px]' >Search</button>
     </div>
 
 
