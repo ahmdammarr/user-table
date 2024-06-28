@@ -1,30 +1,28 @@
-import { Main } from "@/ui";
+import { getUsers } from "@/services/users/getUsers";
+import "./globals.css";
+
+import Search from "@/ui/search";
+import { UsersList, NormUser } from "@/ui/users-list";
 
 
-export default async function Home() {
-  const res = await fetch('https://dummyjson.com/users');
-  const data = await res.json();
 
+interface HomeProps {
+  searchParams: { searchkeyword: string }
+}
+export default async function Home({ searchParams: { searchkeyword } }: HomeProps) {
 
-  const tableData = data?.users?.map((user) => {
-    const { gender, firstName, lastName, birthDate, email } = user
-    return {
-      fullName: `${firstName} ${lastName}`,
-      db: birthDate,
-      email,
-      gender,
-      role: 'admin'
-
-    }
-  })
+  const users = await getUsers(searchkeyword) as NormUser[]
 
   return (
-    <main className="main">
-      <div className="container">
-        <h1>Users</h1>
-        
-        <Main data={tableData} />
-      </div>
-    </main>
+
+    <div className="flex min-h-screen flex-col p-24 w-full">
+      <h1 className="text-4xl font-bold text-black ">My Users</h1>
+      <p className="text-lg text-black">Manage your users here</p>
+
+      <Search />
+      <UsersList users={users} />
+    </div>
   );
 }
+
+

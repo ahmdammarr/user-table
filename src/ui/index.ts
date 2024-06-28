@@ -1,3 +1,2 @@
-export * from './button'
-export * from './table'
-export * from './main'
+export * from './search'
+export * from './users-list'
