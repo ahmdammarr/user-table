@@ -15,14 +15,21 @@ export default async function Home({ searchParams: { searchkeyword } }: HomeProp
 
   return (
 
-    <div className="flex min-h-screen flex-col p-24 w-full">
-      <h1 className="text-4xl font-bold text-black ">My Users</h1>
-      <p className="text-lg text-black">Manage your users here</p>
+    <div className={styles.container}>
+      <h1 className={styles.header}>My Users</h1>
+      <p className={styles.info}>Manage your users here</p>
 
       <Search />
       <UsersList users={users} />
     </div>
   );
+}
+
+
+const styles = {
+  container: "flex min-h-screen flex-col p-24 w-full",
+  header: "text-4xl font-bold text-black ",
+  info: "text-lg text-black"
 }
 
 
